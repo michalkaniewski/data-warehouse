@@ -1,0 +1,17 @@
+version: "3.7"
+services:
+    warehouse:
+        build: ./warehouse/
+        container_name: warehouse
+        healthcheck:
+            test: pg_isready -U postgres -d warehouse
+            interval: 2s
+            timeout: 30s
+            retries: 15
+    app:
+        build: ./app/
+        container_name: app
+        depends_on: 
+            warehouse:
+                condition: service_healthy
+        restart: always
