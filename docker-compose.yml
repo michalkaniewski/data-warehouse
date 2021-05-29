@@ -15,3 +15,12 @@ services:
             warehouse:
                 condition: service_healthy
         restart: always
+    metabase:
+        image: "metabase/metabase"
+        ports:
+            - "3000:3000"
+        depends_on:
+            warehouse:
+                condition: service_healthy
+        restart: always
+        
