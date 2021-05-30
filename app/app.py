@@ -22,12 +22,12 @@ def add_new_row(n):
         str(int(round(time.time() * 1000))) + ");")
 
 def add_new_transaction_row(market, timestamp, quantity, price, total, order_type):
-    day_of_week = datetime.datetime.strptime("2021-05-29T17:06:20.08", '%Y-%m-%dT%H:%M:%S.%f').strftime('%A')
-    date = datetime.datetime.strptime("2021-05-29T17:06:20.08", '%Y-%m-%dT%H:%M:%S.%f').strftime('%Y-%m-%d')
-    day = datetime.datetime.strptime("2021-05-29T17:06:20.08", '%Y-%m-%dT%H:%M:%S.%f').strftime('%d')
-    month = datetime.datetime.strptime("2021-05-29T17:06:20.08", '%Y-%m-%dT%H:%M:%S.%f').strftime('%B')
-    year = datetime.datetime.strptime("2021-05-29T17:06:20.08", '%Y-%m-%dT%H:%M:%S.%f').strftime('%Y')
-    month_number = datetime.datetime.strptime("2021-05-29T17:06:20.08", '%Y-%m-%dT%H:%M:%S.%f').strftime('%m')
+    day_of_week = datetime.datetime.strptime(timestamp, '%Y-%m-%dT%H:%M:%S.%f').strftime('%A')
+    date = datetime.datetime.strptime(timestamp, '%Y-%m-%dT%H:%M:%S.%f').strftime('%Y-%m-%d')
+    day = datetime.datetime.strptime(timestamp, '%Y-%m-%dT%H:%M:%S.%f').strftime('%d')
+    month = datetime.datetime.strptime(timestamp, '%Y-%m-%dT%H:%M:%S.%f').strftime('%B')
+    year = datetime.datetime.strptime(timestamp, '%Y-%m-%dT%H:%M:%S.%f').strftime('%Y')
+    month_number = datetime.datetime.strptime(timestamp, '%Y-%m-%dT%H:%M:%S.%f').strftime('%m')
     quarter = (int(month_number)-1)//3 + 1
     
     last_id = db.execute("INSERT INTO TransactionTime (t_date, t_day, t_month, t_year, quarter, day_of_week) "+
