@@ -8,14 +8,25 @@ services:
             interval: 2s
             timeout: 30s
             retries: 15
+    bittrex-buffer:
+        build: ./bittrex-buffer/
+        container_name: bittrex-buffer
+        healthcheck:
+            test: pg_isready -U postgres -d buffer
+            interval: 2s
+            timeout: 30s
+            retries: 15
     app:
         build: ./app/
         container_name: app
         depends_on: 
             warehouse:
                 condition: service_healthy
+            bittrex-buffer:
+                condition: service_healthy
         restart: always
     metabase:
+        container_name: metabase
         image: "metabase/metabase"
         ports:
             - "3000:3000"
