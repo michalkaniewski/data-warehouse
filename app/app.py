@@ -44,12 +44,6 @@ def add_new_transaction_row(market, timestamp, quantity, price, total, order_typ
     id_type = db.execute("SELECT id_type FROM TransactionType WHERE t_type_name = '" + order_type + "';")
     id_type = next(iter(id_type))[0]
     id_time = next(iter(last_id))[0]
-    '''
-    for l, m, t in zip(last_id, id_market, id_type):
-        id_time = l[0]
-        id_market = m[0]
-        id_type = t[0]
-    '''
     db.execute("INSERT INTO CryptoTransaction (id_time, id_market, id_type, quantity, price, total) "+
         "VALUES ("+
         str(id_time) + "," +
