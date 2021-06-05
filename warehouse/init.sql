@@ -67,8 +67,8 @@ CREATE TABLE IF NOT EXISTS EquityTime (
 
 CREATE TABLE IF NOT EXISTS Company (
     id_company SERIAL PRIMARY KEY,
-    company_name VARCHAR(40) NOT NULL,
-    isin VARCHAR(40) NOT NULL --nie wiem czy potrzebne
+    company_name VARCHAR(40) NOT NULL
+--    isin VARCHAR(40) NOT NULL --nie wiem czy potrzebne
 );
 
 /*
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS Equity (
     minimum_price REAL NOT NULL,
     closing_price REAL NOT NULL,
     percent_price_change REAL NOT NULL,
-    trade_volume REAL NOT NULL,
-    transactions_number INT NOT NULL,
-    turnover_value REAL NOT NULL
+    trade_volume REAL NOT NULL
+--    transactions_number INT NOT NULL,
+--    turnover_value REAL NOT NULL
 );
