@@ -375,8 +375,7 @@ def add_gpw_data():
 
 
 def get_gpw_data():
-    # today = datetime.date.today()
-    today = datetime.date(2021, 5, 28)
+    today = datetime.date.today()
 
     if len(pd.bdate_range(today, today)) > 0:
         today_string = f"{today.day}-{today.month}-{today.year}"
