@@ -364,8 +364,8 @@ def get_bittrex_data(markets):
     return full_df
 
 
-def add_gpw_data():
-    date, df = get_gpw_data()
+def add_gpw_data(day):
+    date, df = get_gpw_data(day)
     # df = df.head()
     insert_equity_time(date)
 
@@ -374,9 +374,9 @@ def add_gpw_data():
         insert_equity(date, row)
 
 
-def get_gpw_data():
+def get_gpw_data(day):
     # today = datetime.date.today()
-    today = datetime.date(2021, 5, 28)
+    today = datetime.date(2021, 5, day)
 
     if len(pd.bdate_range(today, today)) > 0:
         today_string = f"{today.day}-{today.month}-{today.year}"
@@ -502,7 +502,13 @@ if __name__ == '__main__':
 
     # Wstawienie danych z GPW do bazy
     print("add gpw data")
-    add_gpw_data()
+    days = [10, 11, 12, 13, 14,
+            17, 18, 19, 20, 21,
+            24, 25, 26, 27, 28]
+
+    for day in days:
+        add_gpw_data(day)
+
     print(get_equity_time())
     print(get_company())
     print(get_equity())
